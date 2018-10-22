@@ -63,12 +63,13 @@ def rename_for_dir(indir, splitStr, outdir):
             respecies = Species[speName]
         else:
             print("Please check whether the species name %s exists." % speName)
-        newName = respecies + speNum + "-" + resample + "-" + number + "." + suffix
+        newName = respecies + speNum + "-" + resample + "-" + number + splitStr  + suffix
         ### change name
         inName = indir + f
         outName = outdir + newName
 
         cmd = "cp %s %s" % (inName, outName)
+        print(cmd)
         os.system(cmd)
 
 def main():
