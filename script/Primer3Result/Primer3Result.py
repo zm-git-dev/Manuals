@@ -3,6 +3,7 @@ import requests
 import lxml
 from lxml import etree
 import argparse
+import sys
 
 #usage: python Primer3Result.py --url /home/wzk/Project/C100/Candidate/C100_primer_report.html --out /home/wzk/Project/C100/Candidate/C100_primer_report.xls
 
@@ -49,6 +50,9 @@ def parse_primer_result(result_html, out_file):
             product = [Products[j][i] for j in range(len(Products))]
             out_h.write("%s\t%s\t%s\n%s\t%s\n\n" % (seq_id, "\t".join(forward), "\t".join(product), seq_id, "\t".join(reverse)))
     else:
+        print(PrimersLens)
+        print(ProductsLens)
+        print(seqIDLen)
         print("Please check whether the length of primers and products is identical.")
         sys.exit(1)
 
