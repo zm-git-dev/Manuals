@@ -33,6 +33,27 @@ pheatmap(DEG_any,
     color=colorRampPalette(rev(c("red","black","green")))(500))
 }
 
+heatmap2 <- function(data_matrix){
+    heatmap.2(data_matrix,  
+        density.info="none", 
+        trace="none",  
+        key=TRUE, 
+        keysize=0.75, 
+        key.title =NA, 
+        lhei = c(1,90), #the relative height of key color to heatmap
+        lwid=c(2,3.5), 
+        key.xlab="Correlation", 
+        cexRow = 0.75, 
+        cexCol = 0.75, 
+        margins =c(15,20),  
+        notecex=1.0, 
+        col=coul, 
+        key.par = list(cex=0.5), ) 
+}
+
+
+
+
 species_factor_cor_RDA <- function(species_file, env_file, outdir, cor_file, pvalue_file,  heatmap_pdf, width, height){
         
 
@@ -128,6 +149,10 @@ species_factor_cor_RDA <- function(species_file, env_file, outdir, cor_file, pva
     DEG_heatmap2(corr_frame)
     dev.off()
 
+    #################### heatmap using heatmap.2 ####################
+    # data_matrix <- as.matrix(corr_frame)
+    # heatmap2(data_matrix)
+    #################################################################
 
 
     ################################### Calculate RDA ############################################
