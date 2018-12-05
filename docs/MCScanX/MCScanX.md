@@ -1,5 +1,5 @@
 
-## [MCScanX](http://chibba.pgml.uga.edu/mcscan2/)
+## [MCScanX](http://chibba.pgml.uga.edu/mcscan2/): https://github.com/wyp1125/MCScanX
 
 ### [MCScanX manual examples](http://chibba.pgml.uga.edu/mcscan2/examples/)
 
