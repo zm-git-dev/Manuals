@@ -1,4 +1,5 @@
-## humann2
+## [HUMAnN2: The HMP Unified Metabolic Analysis Network 2](http://huttenhower.sph.harvard.edu/humann2)
+
 ### [humann2 manual](https://bitbucket.org/biobakery/humann2/wiki/Home#markdown-header-download-a-translated-search-database)
 
 ### install humann2
@@ -212,6 +213,95 @@ Downloading file of size: 5.87 GB
 $ humann2_databases --download uniref uniref90_ec_filtered_diamond /home/wzk/database/humann2/uniref90
 ```
 
+
+pathway
+
+```
+(evolution) wzk@ubuntu 21:34:13 ^_^ /home/wzk/Project/C100 
+$ cp /home/wzk/anaconda3/pkgs/humann2-0.11.1-py27_3/lib/python2.7/site-packages/humann2/data/pathways/metacyc_reactions_level4ec_only.uniref.bz2 /home/wzk/database/HUMAnN2/metacyc_uniref
+(evolution) wzk@ubuntu 21:35:11 ^_^ /home/wzk/Project/C100 
+$ cp /home/wzk/anaconda3/pkgs/humann2-0.11.1-py27_3/lib/python2.7/site-packages/humann2/data/pathways/metacyc_pathways_structured /home/wzk/database/HUMAnN2/metacyc_uniref
+```
+
+
+
+#### download database through harvard
+
+database directory
+```
+http://huttenhower.sph.harvard.edu/humann2_data/chocophlan/
+http://huttenhower.sph.harvard.edu/humann2_data/uniprot/
+http://huttenhower.sph.harvard.edu/humann2_data/uniprot/uniref_ec_filtered/
+```
+
+
+```
+$ humann2_databases --download chocophlan full /home/wzk/database/HUMAnN2
+
+Creating subdirectory to install database: /home/wzk/database/HUMAnN2/chocophlan
+Download URL: http://huttenhower.sph.harvard.edu/humann2_data/chocophlan/full_chocophlan_plus_viral.v0.1.1.tar.gz
+
+$ humann2_databases --download uniref uniref90_ec_filtered_diamond /home/wzk/database/HUMAnN2
+
+$ humann2_databases --download uniref uniref90_diamond /home/wzk/database/HUMAnN2
+
+$ humann2_databases --download utility_mapping full /home/wzk/database/HUMAnN2
+```
+
+or 
+```
+wget http://huttenhower.sph.harvard.edu/humann2_data/chocophlan/full_chocophlan_plus_viral.v0.1.1.tar.gz
+
+wget http://huttenhower.sph.harvard.edu/humann2_data/uniprot/uniref_ec_filtered/uniref90_ec_filtered_1_1.tar.gz
+
+wget http://huttenhower.sph.harvard.edu/humann2_data/uniprot/uniref_annotated/uniref90_annotated_1_1.tar.gz
+
+wget http://huttenhower.sph.harvard.edu/humann2_data/uniprot/idmapping/map_uniprot_UniRef90.dat.gz
+```
+
+
+### [Humann2 config](https://groups.google.com/forum/#!topic/humann-users/MF--EoXQRnU)
+
+Run config settings:
+```
+ 
+
+DATABASE SETTINGS 
+nucleotide database folder = /data/home/bioinfo/nsher/programs/humann2_v0.2.1/db/chocophlan 
+protein database folder = /data/home/bioinfo/nsher/programs/humann2_v0.2.1/db/uniref 
+pathways database file 1 = /data/home/bioinfo/nsher/.local/lib/python2.7/site-packages/humann2-0.2.1-py2.7.egg/humann2/data/pathways/metacyc_reactions.uniref 
+pathways database file 2 = /data/home/bioinfo/nsher/.local/lib/python2.7/site-packages/humann2-0.2.1-py2.7.egg/humann2/data/pathways/metacyc_pathways_structured_filtered 
+
+RUN MODES 
+resume = False 
+verbose = False 
+bypass prescreen = False 
+bypass nucleotide index = False 
+bypass nucleotide search = False 
+bypass translated search = False 
+translated search = diamond 
+pick frames = off 
+threads = 20 
+
+ALIGNMENT SETTINGS 
+evalue threshold = 1.0 
+average read length = 1 
+prescreen threshold = 0.01 
+identity threshold = 40.0 
+
+PATHWAYS SETTINGS 
+minpath = on 
+xipe = off 
+
+INPUT AND OUTPUT FORMATS 
+input file format = fastq 
+output file format = tsv 
+output max decimals = 10 
+remove stratified output = False 
+log level = DEBUG 
+```
+
+
 ### configuration
 
 ```
@@ -299,6 +389,63 @@ Traceback (most recent call last):
 IndexError: list index out of range
 
 ```
+
+### run humann2 using sam files
+
+
+```
+$ humann2 --input SP1.sam  --nucleotide-database /home/wzk/database/ChocoPhlAn/chocophlan  --protein-database  /home/wzk/database/HUMAnN2/ --output temp
+Creating output directory: /home/wzk/Project/metagenome/MetaPhlAn/mapping/temp
+Output files will be written to: /home/wzk/Project/metagenome/MetaPhlAn/mapping/temp
+
+Process the sam mapping results ...
+
+Computing gene families ...
+
+Computing pathways abundance and coverage ...
+
+Output files created: 
+/home/wzk/Project/metagenome/MetaPhlAn/mapping/temp/SP1_genefamilies.tsv
+/home/wzk/Project/metagenome/MetaPhlAn/mapping/temp/SP1_pathabundance.tsv
+/home/wzk/Project/metagenome/MetaPhlAn/mapping/temp/SP1_pathcoverage.tsv
+
+```
+
+
+or
+
+```
+$ humann2 --input-format sam --input SP1.sam  --nucleotide-database /home/wzk/database/ChocoPhlAn/chocophlan  --protein-database  /home/wzk/database/HUMAnN2/uniref90  --output temp_temp  --search-mode uniref90 --pathways-database /home/wzk/database/HUMAnN2/uniref90_ec/uniref90.ec_filtered.1.1.dmnd
+```
+
+
+output files
+```
+$ head /home/wzk/Project/metagenome/MetaPhlAn/mapping/temp/SP1_genefamilies.tsv
+# Gene Family   SP1_Abundance-RPKs
+UNMAPPED    1935440.0000000000
+gi|421568039|ref|NZ_ALYA01000017.1|:37498-38388 726.1567106948
+gi|421568039|ref|NZ_ALYA01000017.1|:37498-38388|unclassified    726.1567106948
+gi|433516503|ref|NZ_ANRW01000019.1|:572-1684    626.9224494163
+gi|433516503|ref|NZ_ANRW01000019.1|:572-1684|unclassified   626.9224494163
+gi|161869018|ref|NC_010120.1|:c1549712-1548879  562.0617103147
+gi|161869018|ref|NC_010120.1|:c1549712-1548879|unclassified 562.0617103147
+gi|320117067|ref|NZ_GL636062.1|:c2831888-2827800    375.3510905524
+gi|320117067|ref|NZ_GL636062.1|:c2831888-2827800|unclassified   375.3510905524
+
+
+$ head /home/wzk/Project/metagenome/MetaPhlAn/mapping/temp/SP1_pathabundance.tsv
+# Pathway   SP1_Abundance
+UNMAPPED    0.0000000000
+UNINTEGRATED    0.0000000000
+
+
+$ head /home/wzk/Project/metagenome/MetaPhlAn/mapping/temp/SP1_pathcoverage.tsv
+# Pathway   SP1_Coverage
+UNMAPPED    1.0000000000
+UNINTEGRATED    1.0000000000
+```
+
 
 
 #### run test data
