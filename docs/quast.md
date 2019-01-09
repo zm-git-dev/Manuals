@@ -8,6 +8,13 @@ quast need the environment python 2.7
 $ conda install -c bioconda quast 
 ```
 
+or download package
+
+```bash
+$ curl -L http://sourceforge.net/projects/quast/files/quast-3.0.tar.gz/download > quast-3.0.tar.gz
+```
+
+
 ### Run quast
 ```
 $ /home/wzk/anaconda3/envs/py27/lib/python2.7/site-packages/quast-4.6.3-py2.7.egg-info/scripts/quast.py -o /home/wzk/Project/AtGenome/quast -R /home/wzk/database/GENOME/arabidopsis/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa -G /home/wzk/database/GENOME/arabidopsis/Arabidopsis_thaliana.TAIR10.35.gff3 -m 500 -t 20 Correction/ERR2173373_racon3.fasta
@@ -145,3 +152,8 @@ drwxr-xr-x 2 4.0K May 20 04:40 icarus_viewers
 -rw-r--r-- 1 1.1K May 20 04:40 transposed_report.tsv
 -rw-r--r-- 1 1.9K May 20 04:40 transposed_report.txt
 ```
+
+
+
+
+
