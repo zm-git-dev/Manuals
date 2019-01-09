@@ -6,17 +6,100 @@
 ### [Installation](https://github.com/Ecogenomics/CheckM/wiki/Installation)
 
 
-
-```
-# install
-$ conda install checkm-genome
-$ conda install hmmer
-$ conda install prodigal
-$ conda install pplacer
-```
-
+### install other tools previously
 
 CheckM relies on a number of precalculated data files which can be downloaded from https://data.ace.uq.edu.au/public/CheckM_databases/. Decompress the file to an appropriate folder and run **checkm data setRoot** to inform CheckM of where the files have been placed.
+
+
+CheckM requires the following programs to be added to your system path
+* HMMER (>=3.1b1)
+* prodigal (2.60 or >=2.6.1), executable must be named prodigal and not prodigal.linux
+* pplacer (>=1.1)
+  * guppy, which is part of the pplacer package, must also be on your system path
+
+
+* download [pplacer](http://matsen.fhcrc.org/pplacer/)
+Pplacer places query sequences on a fixed reference phylogenetic tree to maximize phylogenetic likelihood or posterior probability according to a reference alignment. Pplacer is designed to be fast, to give useful information about uncertainty, and to offer advanced visualization and downstream analysis.
+
+* [manual of pplacer](http://matsen.github.io/pplacer)
+
+```
+$ wget https://github.com/matsen/pplacer/releases/download/v1.1.alpha19/pplacer-linux-v1.1.alpha19.zip
+```
+or 
+```bash
+$ conda install -c bioconda pplacer
+```
+
+
+* CheckM is a Python 2.x program and we recommend installing it through pip:
+```bash
+$ pip install numpy
+$ conda install checkm-genome
+```
+
+install other tools
+```
+$ conda install hmmer
+$ conda install prodigal
+```
+
+### download the database
+* CheckM relies on a number of [precalculated data files](https://data.ace.uq.edu.au/public/CheckM_databases/)
+```bash
+wget https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_v1.0.7.tar.gz
+```
+then set the pathway of the database
+```
+$ checkm data setRoot /home/wzk/anaconda3/envs/qiime/database/checkm
+
+It seems that the CheckM data folder has not been set yet or has been removed. Running: 'checkm data setRoot'.
+Where should CheckM store it's data?
+Please specify a location or type 'abort' to stop trying: 
+/home/wzk/anaconda3/envs/qiime/database/checkm
+
+Path [/home/wzk/anaconda3/envs/qiime/database/checkm] exists and you have permission to write to this folder.
+(re) creating manifest file (please be patient).
+
+You can run 'checkm data update' to ensure you have the latest data files.
+
+
+*******************************************************************************
+ [CheckM - data] Check for database updates. [setRoot]
+*******************************************************************************
+
+
+Path [/home/wzk/anaconda3/envs/qiime/database/checkm] exists and you have permission to write to this folder.
+(re) creating manifest file (please be patient).
+
+You can run 'checkm data update' to ensure you have the latest data files.
+
+Data location successfully changed to: /home/wzk/anaconda3/envs/qiime/database/checkm
+```
+
+
+* You can run `checkm data update` to ensure you have the latest data files.
+```bash
+$ checkm data update
+
+*******************************************************************************
+ [CheckM - data] Check for database updates. [update]
+*******************************************************************************
+
+Connecting to ACE server.
+
+****************************************************************
+The following 1 file(s) are scheduled to be removed
+checkm_data_v1.0.5.tar.gz
+Confirm you want to delete these files
+Changes *WILL* be permanent
+Delete files? (y,n) : y
+****************************************************************
+/home/wzk/anaconda3/envs/qiime/database/checkm/checkm_data_v1.0.5.tar.gz
+(re) creating manifest file (please be patient)
+```
+
+The setRoot command does not take the desired directory as a parameter. `Run checkm data setRoot` and this will bring up an interactive prompt requesting the path you wish to set.
 
 ```
 $ checkm data setRoot
@@ -435,4 +518,58 @@ BinSanityWf_binsanity_checkm2
 
 16 directories, 189 files
 
+```
+
+
+```bash
+$ head  genes.faa 
+>k119_2_1 # 2 # 310 # 1 # ID=1_1;partial=11;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.621
+RYAGTERFPAILSPEQLQEAAQRRSERKPAVQITEAQKALRRLCNGRPSAAVESQVLSLL
+NCLAAAPEQIKPQPQTVNRGELAEMERRFSAALTTSPVDEGSA
+>k119_3_1 # 2 # 337 # 1 # ID=2_1;partial=11;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.435
+QVKEAKETGVAQDPSKPDEKYTVEQMTRGAMATEKVVDLDQDGVNDTTANDAIPIYAEQA
+ATGMTTGVINYWEGTQFGAFGMGTSVCLGYSKAFSYLVQCLDKDIYLIDPSK
+>k119_4_1 # 1 # 150 # 1 # ID=3_1;partial=10;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.327
+QKLMTIKPGYTKVRAYMWIEGQDMDCYTGASGTYLDFNLKFEVDTVTGA*
+>k119_5_1 # 2 # 439 # -1 # ID=4_1;partial=11;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.694
+EERQRRELRLPLEAERLAHRKGQTLGLYQPRGRAEGQGIFQLARKGGAVRRGIDEGAFVR
+````
+
+```bash
+$ less   genes.gff
+
+##gff-version  3
+# Sequence Data: seqnum=1;seqlen=311;seqhdr="k119_2 flag=1 multi=4.0000 len=311"
+# Model Data: version=Prodigal.v2.6.3;run_type=Single;model="Ab initio";gc_cont=45.73;transl_table=11;uses_sd=0
+k119_2  Prodigal_v2.6.3 CDS     2       310     22.8    +       0       ID=1_1;partial=11;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.621;conf=99.48;score=22.84;cscore=21.23;sscore=1.61;rscore=0.00;uscore=0.00;tscore=1.61;
+# Sequence Data: seqnum=2;seqlen=337;seqhdr="k119_3 flag=1 multi=3.0000 len=337"
+# Model Data: version=Prodigal.v2.6.3;run_type=Single;model="Ab initio";gc_cont=45.73;transl_table=11;uses_sd=0
+k119_3  Prodigal_v2.6.3 CDS     2       337     41.0    +       0       ID=2_1;partial=11;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.435;conf=99.99;score=40.98;cscore=39.37;sscore=1.61;rscore=0.00;uscore=0.00;tscore=1.61;
+```
+
+
+```bash
+$ less hmmer.tree.txt
+
+#                                                                            --- full sequence --- -------------- this domain -------------   hmm coord   ali coord   env coord
+# target name        accession   tlen query name           accession   qlen   E-value  score  bias   #  of  c-Evalue  i-Evalue  score  bias  from    to  from    to  from    to  acc description of target
+#------------------- ---------- ----- -------------------- ---------- ----- --------- ------ ----- --- --- --------- --------- ------ ----- ----- ----- ----- ----- ----- ----- ---- ---------------------
+k119_27610_3         -            134 Ribosom_S12_S23      PF00164.20   122     1e-55  190.5   2.0   1   1   2.7e-59   1.2e-55  190.4   2.0     1   122     2   123     2   123 0.99 # 5152 # 5553 # 1 # ID=27445_3;partial=00;start_type=ATG;rbs_motif=None;rbs_spacer=None;gc_cont=0.473
+k119_22838_1         -            137 Ribosom_S12_S23      PF00164.20   122   1.1e-55  190.4   2.0   1   1   2.9e-59   1.3e-55  190.2   2.0     1   122     5   126     5   126 0.99 # 1 # 411 # 1 # ID=22705_1;partial=10;start_type=Edge;rbs_motif=None;rbs_spacer=None;gc_cont=0.482
+k119_33244_2         -            123 Ribosom_S12_S23      PF00164.20   122   1.7e-55  189.8   1.7   1   1   4.4e-59   1.9e-55  189.7   1.7     1   122     2   123     2   123 0.99 # 4187 # 4555 # 1 # ID=33045_2;partial=01;start_type=ATG;rbs_motif=None;rbs_spacer=None;gc_cont=0.583
+```
+
+```bash
+$ less bin_stats.tree.tsv
+
+HMP_GUT_SRS052697.25M.contigs   {'Translation table': 11, 'GC std': 0.09409472180725674, '# ambiguous bases': 0, 'Genome size': 213146787, 'Longest contig': 400374, 'N50 (scaffolds)': 4328, 'Mean scaffold length': 1514.2998309130694, '# contigs': 140756, '# scaffolds': 140756, '# predicted genes': 297634, 'Longest scaffold': 400374, 'GC': 0.46273789245530594, 'N50 (contigs)': 4328, 'Coding density': 0.8930102568236227, 'Mean contig length': 1514.2998309130694}
+```
+
+
+```bash
+$ less lineage.ms
+
+# [Lineage Marker File]
+HMP_GUT_SRS052697.25M.contigs   1       UID1    root    5656    [set(['PF01000.21', 'PF00416.17', 'PF01193.19', 'PF00411.14']), set(['PF00297.17', 'PF00276.15', 'PF00252.13', 'PF00237.14', 'PF00831.18', 'PF00203.16', 'PF00366.15', 'PF00181.18', 'PF00573.17', 'PF00189.15', 'PF03947.13']), set(['PF04997.7', 'PF04983.13', 'PF04560.15', 'PF04565.11', 'PF00562.23', 'PF00623.15', 'PF05000.12', 'PF04563.10', 'PF04561.9']), set(['PF00281.14', 'PF00673.16', 'PF00347.18', 'PF03719.10', 'PF00333.15', 'PF00861.17', 'PF00410.14', 'PF00238.14']), set(['PF00177.16', 'PF00164.20']), set(['PF00687.16', 'PF00298.14', 'PF03946.9']), set(['PF00380.14', 'PF00572.13']), set(['TIGR00392']), set(['PF01509.13']), set(['PF00162.14']), set(['PF00466.15']), set(['TIGR00468']), set(['PF13184.1']), set(['PF02978.14']), set(['PF11987.3']), set(['TIGR00967']), set(['PF00338.17']), set(['PF00318.15']), set(['PF03484.10']), set(['TIGR00755']), set(['TIGR00344']), set(['PF08459.6']), set(['TIGR00329']), set(['PF00312.17'])]
+lineage.ms (END)
 ```
