@@ -154,8 +154,7 @@ Bandwidth measurement yields no results due to interrupt coalescing
 
 ```
 
--i后面是秘钥文件，如果是直接操作服务器终端秘钥文件为：asperaweb_id_dsa.putty，若是ssh登陆则是上面的秘钥。把对应的ftp地址换成上面的格式即可，后面的.表示下载保存路径，这里为当前目录 
-（ps:ncbi更新了ftp目录，可以根据后缀ID查找ftp://ftp.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByRun/sra/ERR/ERR091/ERR091571/）
+
 
 
 ```
