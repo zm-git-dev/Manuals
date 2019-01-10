@@ -2,6 +2,8 @@
 
 An ultra-fast single-node solution for large and complex metagenomics assembly via succinct de Bruijn graph
 
+### [manual of metahit](https://github.com/chrisquince/metag-rev-sup)
+
 ### assembly 
 ```bash
 $ megahit -1 raw/HMP_GUT_SRS052697.25M.1.fastq.gz -2 raw/HMP_GUT_SRS052697.25M.2.fastq.gz --num-cpu-threads 20 --continue --out-dir  assembly --out-prefix HMP_GUT
