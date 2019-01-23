@@ -1,3 +1,14 @@
+### How to tell if string starts with a number?
+
+```python
+string[0].isdigit()
+
+import re
+re.search('^\s*[0-9]',"0abc")
+
+strg[:1] in '0123456789'
+```
+
 
 ## dict (amino acid and nucleotide acid)
 ```

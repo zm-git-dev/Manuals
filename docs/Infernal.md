@@ -57,6 +57,23 @@ The seed file was downloded from Rfam.
 A multiple alignment of bacterial 16S rRNA gene sequences. A simple example of
 Stockholm format that Infernal uses for structurally-annotated alignments.
 
+### rRNA of Rfam
+```
+http://rfam.xfam.org/search/keyword?queryType=unp&query=rRNA&submit=Submit
+
+RF00177 SSU rRNA bacteria   Bacterial small subunit ribosomal RNA               
+RF01959 SSU rRNA archaea    Archaeal small subunit ribosomal RNA                            
+RF02540 LSU rRNA archaea    Archaeal large subunit ribosomal RNA                
+RF02541 LSU rRNA bacteria   Bacterial large subunit ribosomal RNA
+
+http://rfam.xfam.org/family/RF00177/alignment/stockholm?gzip=1&download=1
+http://rfam.xfam.org/family/RF01959/alignment/stockholm?gzip=1&download=1
+http://rfam.xfam.org/family/RF02540/alignment/stockholm?gzip=1&download=1
+http://rfam.xfam.org/family/RF02541/alignment/stockholm?gzip=1&download=1
+```
+
+
+
 
 ### SSU_rRNA_bacteria (RF00177.seed)
 
