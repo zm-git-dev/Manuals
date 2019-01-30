@@ -121,3 +121,51 @@ k genomic.kmers cov.cutoff
 ```
 
 
+
+### kmergenie example
+```
+$ kmergenie file_list -l 21 -k 141
+running histogram estimation
+list of reads:
+/home/wzk/Project/C128/clean/J1-08/J1-08.clean.paired.R1.fq.gz
+/home/wzk/Project/C128/clean/J1-08/J1-08.clean.paired.R2.fq.gz
+Setting maximum kmer length to: 150 bp
+computing histograms (from k=21 to k=141): 
+ntCard wall-clock time over all k values: 212 seconds 
+fitting model to histograms to estimate best k
+table of predicted num. of genomic k-mers: histograms.dat
+recommended coverage cut-off for best k: 2
+best k: 101
+```
+
+
+output:
+```
+histograms_report.html
+histograms.dat.pdf
+histograms.dat
+```
+
+```
+$cat histograms.dat
+
+k genomic.kmers cov.cutoff
+21 10837842 6
+31 831900 21
+41 3698744 6
+51 2668375 6
+61 2199876 6
+71 1371561 6
+81 845647 6
+91 10794119 3
+97 5862463 3
+99 62597 15
+101 13935560 2
+103 107152 11
+105 55919 13
+107 27584 18
+111 10760980 2
+121 7403374 2
+131 8786 12
+141 24230 7
+```
