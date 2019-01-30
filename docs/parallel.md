@@ -24,3 +24,23 @@ $ ls -1 | parallel --max-args=2 cat {1} {2} ">" {1}_{2}.person
 ```
 $ cat /home/wzk/Project/C128/annotate/Mix/sprot.faa | parallel --gnu --plain -j 10 --block 2504139 --recstart '>' --pipe blastp -query - -db /home/wzk/anaconda3/envs/qiime/bin/../db/kingdom/Bacteria/sprot -evalue 1e-06 -num_threads 1 -num_descriptions 1 -num_alignments 1 -seg no > /home/wzk/Project/C128/annotate/Mix/sprot.blast 2> /dev/null
 ```
+
+### parallel example
+
+```
+$ less gene_association.tair
+
+TAIR    locus:2150931   TDP1            GO:0000012      TAIR:Communication:501741973    IBA     PANTHER:PTN000275870    P       AT5G15170       AT5G15170|TDP1|tyrosyl-DNA phosphodiesterase 1|F8M21.60|F8M21_60        protein taxon:3702      20161023        GOC             
+TAIR    locus:2045437   RAD50           GO:0000014      TAIR:Communication:501741973    IBA     PANTHER:PTN000429848    F       AT2G31970       AT2G31970|RAD50|ATRAD50|F22D22.28|F22D22_28|dna repair-recombination protein    protein taxon:3702      20160323        GOC             
+```
+
+
+```
+$ parallel --pipe --block 2M grep TDP1  <  gene_association.tair
+```
+
+```
+$ parallel -j100% --pipepart --block 100M -a <very large SEEKABLE file> grep <...>
+```
+
+

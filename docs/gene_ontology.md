@@ -1,3 +1,91 @@
+
+
+## [geneontology](http://archive.geneontology.org/latest-full/)
+
+```
+files:
+[TXT] README                            10-May-2011 15:00  5.9K  
+[   ] go_monthly-assocdb-data.gz        07-Jan-2017 01:51  6.2G  
+[   ] go_monthly-assocdb-summary.txt.gz 07-Jan-2017 01:51  1.1K  
+[   ] go_monthly-assocdb-tables.tar.gz  07-Jan-2017 01:56  6.1G  
+[   ] go_monthly-termdb-data.gz         07-Jan-2017 01:56   12M  
+[   ] go_monthly-termdb-summary.txt.gz  07-Jan-2017 01:56  387   
+[   ] go_monthly-termdb-tables.tar.gz   07-Jan-2017 01:56   12M  
+[   ] go_monthly-termdb.obo-xml.gz      07-Jan-2017 01:56  4.4M  
+[   ] go_monthly-termdb.owl.gz          07-Jan-2017 01:56  5.5M  
+[   ] go_monthly-termdb.rdf-xml.gz      07-Jan-2017 01:56  4.4M  
+```
+
+### download database
+```
+wget http://archive.geneontology.org/latest-full/README
+wget http://archive.geneontology.org/latest-full/go_monthly-assocdb-data.gz
+wget http://archive.geneontology.org/latest-full/go_monthly-assocdb-summary.txt.gz
+wget http://archive.geneontology.org/latest-full/go_monthly-assocdb-tables.tar.gz
+wget http://archive.geneontology.org/latest-full/go_monthly-termdb-data.gz
+wget http://archive.geneontology.org/latest-full/go_monthly-termdb-summary.txt.gz
+wget http://archive.geneontology.org/latest-full/go_monthly-termdb-tables.tar.gz
+wget http://archive.geneontology.org/latest-full/go_monthly-termdb.obo-xml.gz
+wget http://archive.geneontology.org/latest-full/go_monthly-termdb.owl.gz
+wget http://archive.geneontology.org/latest-full/go_monthly-termdb.rdf-xml.gz
+```
+
+
+
+
+### go_monthly-assocdb-data
+```
+$ grep -n 'Table structure'  go_monthly-assocdb-data
+19:-- Table structure for table `assoc_rel`
+47:-- Table structure for table `association`
+11550:-- Table structure for table `association_isoform`
+11574:-- Table structure for table `association_property`
+11602:-- Table structure for table `association_qualifier`
+11633:-- Table structure for table `association_species_qualifier`
+11660:-- Table structure for table `db`
+11695:-- Table structure for table `dbxref`
+13598:-- Table structure for table `evidence`
+28678:-- Table structure for table `evidence_dbxref`
+34750:-- Table structure for table `gene_product`
+37998:-- Table structure for table `gene_product_ancestor`
+38026:-- Table structure for table `gene_product_count`
+40788:-- Table structure for table `gene_product_dbxref`
+40813:-- Table structure for table `gene_product_homology`
+40839:-- Table structure for table `gene_product_homolset`
+40866:-- Table structure for table `gene_product_phylotree`
+40892:-- Table structure for table `gene_product_property`
+40919:-- Table structure for table `gene_product_seq`
+40945:-- Table structure for table `gene_product_subset`
+40970:-- Table structure for table `gene_product_synonym`
+43386:-- Table structure for table `graph_path`
+43457:-- Table structure for table `graph_path2term`
+43482:-- Table structure for table `homolset`
+43515:-- Table structure for table `instance_data`
+43541:-- Table structure for table `intersection_of`
+43569:-- Table structure for table `phylotree`
+43594:-- Table structure for table `phylotree_property`
+43620:-- Table structure for table `relation_composition`
+43651:-- Table structure for table `relation_properties`
+43681:-- Table structure for table `seq`
+43714:-- Table structure for table `seq_dbxref`
+43740:-- Table structure for table `seq_property`
+43769:-- Table structure for table `source_audit`
+43798:-- Table structure for table `species`
+43972:-- Table structure for table `term`
+44014:-- Table structure for table `term2term`
+44048:-- Table structure for table `term2term_metadata`
+44077:-- Table structure for table `term_audit`
+44101:-- Table structure for table `term_dbxref`
+44132:-- Table structure for table `term_definition`
+44169:-- Table structure for table `term_property`
+44193:-- Table structure for table `term_subset`
+44219:-- Table structure for table `term_synonym`
+
+```
+
+
+
+
 ## [gene ontology](http://www.geneontology.org/page/download-go-annotations)
 ### Danio rerio(斑马鱼):
 wget http://geneontology.org/gene-associations/gene_association.zfin.gz

@@ -1,4 +1,5 @@
 ## samtools
+### [samtools Tutorial](http://quinlanlab.org/tutorials/samtools/samtools.html)
 
 ### split bam files
 view header of bam

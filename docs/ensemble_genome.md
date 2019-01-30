@@ -1,7 +1,17 @@
 
 ## ensemble
-
+```
 ftp://ftp.ensemblgenomes.org/pub/
+
+```
+
+```
+ftp://ftp.ensembl.org/pub/release-92/gff3/
+ftp://ftp.ensembl.org/pub/release-92/fasta/
+
+```
+
+
 
 ### metazoa
 

@@ -390,3 +390,86 @@ select * from film order by year desc limit 10;
 select count(*) from film
 
 ```
+
+
+
+### Export SQLite Database to a CSV file
+```
+>sqlite3 c:/sqlite/chinook.db
+sqlite> .headers on
+sqlite> .mode csv
+sqlite> .output data.csv
+sqlite> SELECT customerid,
+   ...>        firstname,
+   ...>        lastname,
+   ...>        company
+   ...>   FROM customers;
+sqlite> .quit
+```
+
+```
+>sqlite3 -header -csv c:/sqlite/chinook.db "select * from tracks;" > tracks.csv
+```
+
+```
+>sqlite3 -header -csv c:/sqlite/chinook.db < query.sql > data.csv
+```
+
+
+
+
+### The SQLite Dump Command
+```
+>sqlite3 c:/sqlite/chinook.db
+sqlite> .output c:/sqlite/chinook.sql
+sqlite> .dump
+sqlite> .exit
+
+```
+
+### Dump a specific table using the SQLite dump command
+the following command saves the albums table to the albums.sql file
+```
+sqlite> .output c:/sqlite/albums.sql
+sqlite> .dump albums
+sqlite> .quit
+```
+
+### Dump tables structure only using schema command
+```
+sqlite> .output c:/sqlite/chinook_structure.sql
+sqlite> .schema
+sqlite> .quit
+```
+
+### Dump data of one or more tables into a file
+First, set the mode to *insert* using the *.mode* command as follows:
+```
+sqlite> .mode insert
+```
+From now on, every SELECT statement will issue the result as the INSERT statements instead of pure text data.
+
+Second, set the output to a text file instead of the default standard output. The following command sets the output file to the *data.sql* file.
+```
+sqlite> .output data.sql
+```
+
+Third, issue the SELECT statements to query data from a table that you want to dump. The following command returns data from the *artists* table.
+```
+sqlite> select * from artists;
+```
+
+
+### .sql to .db
+```
+sqlite> .read db.sql
+```
+or
+```
+cat db.sql | sqlite3 database.db
+```
+or
+```
+sqlite3 database.sqlite3 < db.sql
+```
+
