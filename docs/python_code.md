@@ -1,3 +1,77 @@
+### reg pattern for digit
+
+```python
+string[0].isdigit()
+
+import re
+re.search('^\s*[0-9]',"0abc")
+
+strg[:1] in '0123456789'
+```
+
+
+### sort a dictionary by value
+
+```
+import operator
+x = {1: 2, 3: 4, 4: 3, 2: 1, 0: 0}
+sorted_x = sorted(x.items(), key=operator.itemgetter(1))
+```
+
+
+And for those wishing to sort on keys instead of values:
+
+```
+import operator
+x = {1: 2, 3: 4, 4: 3, 2: 1, 0: 0}
+sorted_x = sorted(x.items(), key=operator.itemgetter(0))
+
+```
+
+
+In Python3 since unpacking is not allowed [1] we can use
+
+```
+x = {1: 2, 3: 4, 4: 3, 2: 1, 0: 0}
+sorted_by_value = sorted(x.items(), key=lambda kv: kv[1])
+```
+
+
+
+
+### [Fisher's exact test](https://en.wikipedia.org/wiki/Fisher%27s_exact_test)
+
+```
+n = a + b + c +d
+p_value = (a+b)! (c+d)! (a+c)! (b+d)! / a! b! c! d! n!
+```
+
+
+```
+def fisher_test(m1, n1, m2, n2, **kargs):
+    alternative = kargs.get('alternative', 'greater')
+    cmd = 'fisher.test(matrix(c(%d, %d, %d, %d), nc = 2), alternative = "%s")' \
+          % (m1, n1 - m1, m2, n2 - m2, alternative)
+    return robjects.r(cmd)[0][0]
+```
+
+
+```
+
+def stats_fisher_exact(obs):
+    """
+    argv:
+        [[368, 132], [10562, 13480]]
+    return:
+        2.41127716957e-40
+    """
+    #gene_numbre: 24042
+    # obs = [[368, 132], [10562, 13480]]
+    oddsratio, pvalue= stats.fisher_exact(obs)
+    print(pvalue)
+```
+
+
 ### How to tell if string starts with a number?
 
 ```python

@@ -85,3 +85,38 @@ HTTPS CRAN mirror
 ```
 
 
+## [Read Rectangular Text Data](https://www.rdocumentation.org/packages/readr/versions/1.1.1)
+
+### installation
+
+```
+# The easiest way to get readr is to install the whole tidyverse:
+install.packages("tidyverse")
+
+# Alternatively, install just readr:
+install.packages("readr")
+
+# Or the the development version from GitHub:
+# install.packages("devtools")
+devtools::install_github("tidyverse/readr")
+```
+
+### readr usage
+
+readr is part of the core tidyverse, so load it with:
+
+```
+library(tidyverse)
+```
+
+readr supports seven file formats with seven read_ functions:
+```
+read_csv(): comma separated (CSV) files
+read_tsv(): tab separated files
+read_delim(): general delimited files
+read_fwf(): fixed width files
+read_table(): tabular files where colums are separated by white-space.
+read_log(): web log files
+```
+
+

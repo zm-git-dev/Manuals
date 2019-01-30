@@ -279,6 +279,10 @@ $ tree
 
 
 #### make html
+```
+sphinx-build -b html sourcedir builddir
+```
+
 
 ```
 sphinx-build -b html docs/ _build/
