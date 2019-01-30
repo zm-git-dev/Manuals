@@ -240,3 +240,17 @@ $ /home/wzk/anaconda3/envs/qiime/bin/ascp -TQ -k1 -l 100M -P 33001  -i /home/wzk
 
 FAF09701-4249180049-Bham-R9.4-Ultra.tar.gz                                                                               1%  300MB 97.1Mb/s    44:21 ETA
 ```
+
+### example
+
+```
+/home/wzk/anaconda3/envs/qiime/bin/ascp -TQ -k1 -l 100M -P 33001  -i /home/wzk/anaconda3/pkgs/aspera-connect-3.7.2-0/opt/aspera/connect/etc/asperaweb_id_dsa.openssh --mode recv --host fasp.sra.ebi.ac.uk --user era-fasp --file-list sites /disk1/Project/KC2018-C128/PRJEB26791
+```
+
+
+```
+$ cut -f 10  ERS2544835.txt | sed '1d' | sed 's/ftp\.sra\.ebi\.ac\.uk//g' > ERS2544835_sites.txt
+
+$ /home/wzk/anaconda3/envs/qiime/bin/ascp -TQ -k1 -l 100M -P 33001  -i /home/wzk/anaconda3/pkgs/aspera-connect-3.7.2-0/opt/aspera/connect/etc/asperaweb_id_dsa.openssh --mode recv --host fasp.sra.ebi.ac.uk --user era-fasp --file-list ERS2544835_sites.txt /disk1/Project/KC2018-C128/PRJEB26791
+```
+
